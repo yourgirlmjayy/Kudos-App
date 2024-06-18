@@ -1,0 +1,17 @@
+.header-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+}
+
+.app-logo{
+    height: 50px;
+    margin-right: 10px;
+}
+
+.app-name{
+    font-size: 24px;
+    color: rgb(115, 115, 201);
+}
