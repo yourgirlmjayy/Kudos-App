@@ -3,25 +3,37 @@ import './SearchForm.css';
 
 const SearchForm = ({searchInput, handleSearchInput,handleFilterClicked}) => {
 
+    const [search, setSearch] = useState("")
+
     const handleInputChange = (event) => {
-        handleSearchInput(event.target.value.trim()); //trim out whitespaces from user's input
+        setSearch(event.target.value.trim())
+
+        if (event.target.value.trim() == ""){
+            handleSearchInput("")
+        }
+    }
+
+    const handleSearch = () => {
+        handleSearchInput(search); //trim out whitespaces from user's input
     }
 
     const buttonIsClicked = (event) => {
         handleFilterClicked(event.target.name);
     }
- 
+    
+    const handleFormSubmit = (event) => {
+       event.preventDefault()
+    }
 
     return (
         <>
-        <form className='search-form' onSubmit={(event) => event.preventDefault()}>
+        <form className='search-form' onSubmit={handleFormSubmit}>
         <input
             type="text"
-            value={searchInput} 
-            onChange={handleInputChange}
+            onChange={handleInputChange}            
             placeholder="Search a board..."
         />
-        <button type="submit">Search</button> {/* Add search icon to button for accessibility */}
+        <button type="submit" onClick={handleSearch}>Search</button> {/* Add search icon to button for accessibility */}
         </form>
         <div className="category-filters">
         <button name="All" onClick={buttonIsClicked}>All</button>
