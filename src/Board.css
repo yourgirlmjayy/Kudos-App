@@ -1,0 +1,33 @@
+.propsImage{
+    width: 200px;
+}
+
+.board-card{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-right: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* overflow: hidden; */
+    width: 200px;
+    text-align: center;
+    margin: 7px;
+
+}
+
+.board-details{
+ padding: 10px;
+}
+
+.board-title{
+    font-size: 18px;
+}
+
+.view-board{
+    background-color: rgb(102, 102, 199);
+    color: black;
+}
+
+.delete-board{
+    background-color: rgb(102, 102, 199);
+    color: black;
+}
