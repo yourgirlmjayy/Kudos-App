@@ -1,32 +1,37 @@
 import { useState } from 'react';
 import './SearchForm.css';
 
-const SearchForm = ({ onSearch }) => {
-    const[text, setText] = useState('');
+const SearchForm = ({searchInput, handleSearchInput,handleFilterClicked}) => {
 
     const handleInputChange = (event) => {
-        setText(event.target.value.trim()); //Trim whitespaces
-    };
+        handleSearchInput(event.target.value.trim()); //trim out whitespaces from user's input
+    }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (text !== '') { // Check if input is not empty
-            onSearch(text); 
-        }
-    };
+    const buttonIsClicked = (event) => {
+        handleFilterClicked(event.target.name);
+    }
  
 
     return (
-        <form className='search-form' onSubmit={handleSubmit}>
+        <>
+        <form className='search-form'>
         <input
             type="text"
-            value={text}
+            value={searchInput} 
             onChange={handleInputChange}
             placeholder="Search a board..."
         />
         <button type="submit">🔎</button> {/* Add search icon to button for accessibility */}
         </form>
-    );
+        <div className="category-filters">
+        <button name="All" onClick={buttonIsClicked}>All</button>
+        <button name="Recent" onClick={buttonIsClicked}>Recent</button>
+        <button name="Celebration" onClick={buttonIsClicked}>Celebration</button>
+        <button name="Thank You" onClick={buttonIsClicked}>Thank You</button>
+        <button name="Inspiration" onClick={buttonIsClicked}>Inspiration</button>
+    </div>
+    </>
+    )
 }
 
 export default SearchForm;
