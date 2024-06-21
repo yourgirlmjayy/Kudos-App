@@ -45,6 +45,8 @@ function App() {
     }
     //updates the filteredResults state with the updated boards array
     setFilteredResults(boards);
+
+    return boards;
   };
 
   async function addBoard(boardData) {
@@ -119,8 +121,8 @@ function App() {
   }
 
   const handleSearchInput = (searchInput) => {
-    setSearchInput(searchInput); //update search input 
-    setSearchResults(boards.filter(board => board.title.toLowerCase().includes(searchInput.toLowerCase()))); // filter boards by title and make search case insensitive
+    setSearchInput(searchInput); //update search input
+    setSearchResults(boards.filter( (board) => board.title.toLowerCase().includes(searchInput.toLowerCase()))); // filter boards by title and make search case insensitive
 }
 
   const handleFilterClicked = (selectedFilter) => {
@@ -136,6 +138,21 @@ function App() {
     const filtered = boards.filter(board => board.category == criteria);
     return filtered.length > 0 ? filtered : [];
   }
+
+
+  useEffect(() => {
+      console.log(filterCriteria, searchInput)
+      if (searchInput){
+        setBoards( getFilteredBoards(searchResults, filterCriteria) )
+      } else if (filterCriteria) {
+        getBoards()
+          .then((data) => {
+            console.log(data)
+            getFilteredBoards(data, filterCriteria)
+        })
+      }
+
+  }, [searchInput, filterCriteria])
 
   const BoardList = boards.map((board) => {
     return( 
@@ -171,8 +188,12 @@ function App() {
           <main>
             <div className='board-container'>
               {BoardList}
+
             </div>
           </main>
+          
+          <footer>Created by Mojolajesu Dada</footer>
+
           {isModalVisible && (
             <Modal
               isOpen={isModalVisible}
