@@ -21,7 +21,7 @@ const SearchForm = ({searchInput, handleSearchInput,handleFilterClicked}) => {
             onChange={handleInputChange}
             placeholder="Search a board..."
         />
-        <button type="submit">🔎</button> {/* Add search icon to button for accessibility */}
+        <button type="submit">Search</button> {/* Add search icon to button for accessibility */}
         </form>
         <div className="category-filters">
         <button name="All" onClick={buttonIsClicked}>All</button>
