@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './Header';
 // import Buttons from './Buttons';
 import SearchForm from './SearchForm.jsx';
 import Board from './Board.jsx';
 import Modal from './Modal.jsx';
+import BoardPage from './BoardPage.jsx';
+
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -138,6 +141,7 @@ function App() {
     return( 
       <Board 
         key={board.id}
+        id={board.id}
         title={board.title}
         category={board.category}
         onBoardDelete={() => handleDeleteBoard(board.id)}
@@ -147,39 +151,42 @@ function App() {
   })
 
   return(
-    <>
-
-      <header>
-        <div className='kudos-app'>
-            <Header />
-            <SearchForm 
-              searchInput={searchInput}
-              handleSearchInput={handleSearchInput}
-              handleFilterClicked={handleFilterClicked}
-            />
-            {/* <Buttons /> */}
-            <div className='centre-button'>
-              <button className='create-new-board-button' onClick={handleOpenModal}>Create a new Board</button>
+    <Router>
+    <Routes>
+      <Route path='/' element={
+        <>
+          <header>
+            <div className='kudos-app'>
+              <Header />
+              <SearchForm 
+                searchInput={searchInput}
+                handleSearchInput={handleSearchInput}
+                handleFilterClicked={handleFilterClicked}
+              />
+              <div className='centre-button'>
+                <button className='create-new-board-button' onClick={handleOpenModal}>Create a new Board</button>
+              </div>
             </div>
-        </div>
           </header>
-      <main>
-        <div className='board-container'>
-            {BoardList}
-        </div>
-
-      </main>
-      
-      {isModalVisible && (
-        <Modal
-          isOpen={isModalVisible}
-          closeModal={handleCloseModal}
-          onModalDataChange={handleBoardDataChange}
-          boardData={boardData}
-          submitForm={handleCreateBoard}
-        />
-      )}
-    </>
+          <main>
+            <div className='board-container'>
+              {BoardList}
+            </div>
+          </main>
+          {isModalVisible && (
+            <Modal
+              isOpen={isModalVisible}
+              closeModal={handleCloseModal}
+              onModalDataChange={handleBoardDataChange}
+              boardData={boardData}
+              submitForm={handleCreateBoard}
+            />
+          )}
+        </>
+      } />
+      <Route path='/board/:boardId' element={<BoardPage />}/>
+    </Routes>
+  </Router>
 
   )
 }
