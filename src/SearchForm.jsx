@@ -8,7 +8,7 @@ const SearchForm = ({searchInput, handleSearchInput,handleFilterClicked}) => {
     const handleInputChange = (event) => {
         setSearch(event.target.value.trim())
 
-        if (event.target.value.trim() == ""){
+        if (event.target.value.trim() === ""){
             handleSearchInput("")
         }
     }

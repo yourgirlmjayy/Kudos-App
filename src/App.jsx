@@ -45,8 +45,6 @@ function App() {
     }
     //updates the filteredResults state with the updated boards array
     setFilteredResults(boards);
-
-    return boards;
   };
 
   async function addBoard(boardData) {
@@ -130,15 +128,19 @@ function App() {
   }
 
   function getFilteredBoards(boards, criteria) {
+
+    // console.log("IN );
+
     // if user selects 'all', return all the boards available
-    if (criteria == "All") {
-      return boards;
-    }
+    // if (criteria == "All") {
+    //   return boards;
+    // }
     // map the boards based on the category user selects to const filtered
-    const filtered = boards.filter(board => board.category == criteria);
+    const filtered = boards.filter(board => board.category === criteria);
     return filtered.length > 0 ? filtered : [];
   }
 
+  console.log('BOARDS', boards);
 
   useEffect(() => {
       console.log(filterCriteria, searchInput)
@@ -146,10 +148,9 @@ function App() {
         setBoards( getFilteredBoards(searchResults, filterCriteria) )
       } else if (filterCriteria) {
         getBoards()
-          .then((data) => {
-            console.log(data)
-            getFilteredBoards(data, filterCriteria)
-        })
+ 
+            setBoards(getFilteredBoards(boards, filterCriteria))
+        
       }
 
   }, [searchInput, filterCriteria])
