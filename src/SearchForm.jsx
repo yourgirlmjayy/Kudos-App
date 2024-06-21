@@ -14,7 +14,7 @@ const SearchForm = ({searchInput, handleSearchInput,handleFilterClicked}) => {
 
     return (
         <>
-        <form className='search-form'>
+        <form className='search-form' onSubmit={(event) => event.preventDefault()}>
         <input
             type="text"
             value={searchInput} 

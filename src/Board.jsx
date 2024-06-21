@@ -11,7 +11,7 @@ function Board(props){
             </div>
             <div className='card-button'>
                 <button className='view-board'>👁️</button>
-                <button className='delete-board' onClick={props.onBoardDelete}>🗑️</button>
+                <button className='delete-board' onClick={() => props.onBoardDelete(props.id)}>🗑️</button>
             </div>
         </div>
     )
