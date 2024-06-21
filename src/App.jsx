@@ -71,6 +71,7 @@ function App() {
   };
 
   async function deleteBoard(boardId) {
+    //make call to backend to delete board
     try{
       const backendUrlAccess = import.meta.env.VITE_BACKEND_ADDRESS;
       const options = {
@@ -93,6 +94,7 @@ function App() {
   
   // set function to handle when modal is opened
   function handleOpenModal (){
+    //set modal visibility to true to handle when modal is open
     setIsModalVisible(true);
   }
 
@@ -138,7 +140,8 @@ function App() {
         key={board.id}
         title={board.title}
         category={board.category}
-        onBoardDelete={() => onBoardDelete(board.id)}
+        onBoardDelete={() => handleDeleteBoard(board.id)}
+        boards={searchInput ? getFilteredBoards(searchResults, filterCriteria) : getFilteredBoards(boards, filterCriteria)}
       />
     )
   })
