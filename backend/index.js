@@ -61,6 +61,24 @@ app.post('/boards/:id/cards', async (req, res) => {
     res.status(201).json(newCard);
 })
 
+app.post('/boards/:id/cards', async (req, res) => {
+    const {id} = req.params;
+    const {title, description, author, imgUrl} = req.body;
+    const newCard = await prisma.card.create({
+        data: {
+            title,
+            description,
+            author,
+            imgUrl,
+            board: {
+                connect: {
+                    id: parseInt(id)
+                }}}});
+    res.status(201).json(newCard);
+})
+
+
+
 const PORT = 3000
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)

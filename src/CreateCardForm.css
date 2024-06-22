@@ -16,8 +16,22 @@
     margin: 20% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 70%;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.giffy-images{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gifs{
+    width: calc(25% - 10px);
+    margin-bottom: 10px;
+    box-sizing: border-box;
 }
 
 .close-button {

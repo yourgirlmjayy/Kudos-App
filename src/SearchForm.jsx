@@ -13,8 +13,9 @@ const SearchForm = ({searchInput, handleSearchInput,handleFilterClicked}) => {
         }
     }
 
+    handleSearchInput(search); 
+    //trim out whitespaces from user's input
     const handleSearch = () => {
-        handleSearchInput(search); //trim out whitespaces from user's input
     }
 
     const buttonIsClicked = (event) => {
@@ -22,6 +23,7 @@ const SearchForm = ({searchInput, handleSearchInput,handleFilterClicked}) => {
     }
     
     const handleFormSubmit = (event) => {
+        //prevent page from being refreshed when seearch button is clicked
        event.preventDefault()
     }
 
@@ -33,7 +35,7 @@ const SearchForm = ({searchInput, handleSearchInput,handleFilterClicked}) => {
             onChange={handleInputChange}            
             placeholder="Search a board..."
         />
-        <button type="submit" onClick={handleSearch}>Search</button> {/* Add search icon to button for accessibility */}
+        <button type="submit" onClick={handleSearch}>Search</button> 
         </form>
         <div className="category-filters">
         <button name="All" onClick={buttonIsClicked}>All</button>

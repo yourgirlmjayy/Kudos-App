@@ -5,7 +5,7 @@ function Board(props){
     const navigate = useNavigate();
     return(
         <div className='board-card'>
-            <img src={props.imgSrc} className='propsImage' alt='Board Image'></img>
+            <img src="https://picsum.photos/200/300?random=124" className='propsImage' alt='Board Image'></img>
             <div className='board-details'>
                 <h5 className='board-title'>{props.title}</h5>
                 <span className='board-category'>{props.category}</span>

@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './Header';
-// import Buttons from './Buttons';
 import SearchForm from './SearchForm.jsx';
 import Board from './Board.jsx';
 import Modal from './Modal.jsx';
@@ -18,13 +15,11 @@ function App() {
   const [filteredBoards, setFilteredBoards] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [filterCriteria, setFilterCriteria] = useState("All"); // default, all boards is the category of boards displayed
-  //const [filteredResults, setFilteredResults] = useState([]);
-
+  const [filterCriteria, setFilterCriteria] = useState("All");
 
   useEffect(() => {
     getBoards();
-  }, []); // renders page immediately
+  }, []); // renders page with boards immediately
   
   async function getBoards() {
     // fetch list of boards from backend server
@@ -39,13 +34,13 @@ function App() {
       // parse fetched data as json
       const data = await response.json();
       setBoards(data);
-      console.log(boards);
+      const filtered = getFilteredBoards(data, filterCriteria);
+      const searchedAndFiltered = getSearchBoards(filtered, searchInput);
+      setFilteredBoards(searchedAndFiltered);
     }
     catch(error) {
       console.error(error);
     }
-    //updates the filteredResults state with the updated boards array
-    //setFilteredResults(boards);
   };
 
   async function addBoard(boardData) {
@@ -121,7 +116,6 @@ function App() {
 
   const handleSearchInput = (searchInput) => {
     setSearchInput(searchInput); //update search input
-    //setSearchResults(boards.filter( (board) => board.title.toLowerCase().includes(searchInput.toLowerCase()))); // filter boards by title and make search case insensitive
 }
 
   const handleFilterClicked = (selectedFilter) => {
@@ -134,29 +128,22 @@ function App() {
     }
     return boards.filter( (board) => board.title.toLowerCase().includes(searchCriteria.toLowerCase()));
   }
+
   function getFilteredBoards(boards, criteria) {
-
-    // console.log("IN );
-
     // if user selects 'all', return all the boards available
     if (criteria == "All") {
       return boards;
     }
     // map the boards based on the category user selects to const filtered
     const filtered = boards.filter(board => board.category === criteria);
-    return filtered.length > 0 ? filtered : [];
+    return filtered.length > 0 ? filtered : []; 
   }
 
 
 
   useEffect(() => {
-      console.log(filterCriteria, searchInput)
-        console.log(boards);
-
         const filtered = getFilteredBoards(boards, filterCriteria);
         const searchedAndFiltered = getSearchBoards(filtered, searchInput);
-        console.log(filtered);
-        console.log(searchedAndFiltered);
         setFilteredBoards(searchedAndFiltered);
 
   }, [searchInput, filterCriteria])
@@ -169,8 +156,6 @@ function App() {
         title={board.title}
         category={board.category}
         onBoardDelete={() => handleDeleteBoard(board.id)}
-        //boards={filteredBoards}
-        //boards={searchInput ? getFilteredBoards(searchResults, filterCriteria) : getFilteredBoards(boards, filterCriteria)}
       />
     )
   })
