@@ -2,7 +2,7 @@ import './Card.css';
 
 import React from 'react';
 
-function Card({title, description, imgUrl, author, upvotes}) {
+function Card({title, description, imgUrl, author, upvotes, handleDelete, key}) {
   return (
     <div className="card">
         <h3>{title}</h3>
@@ -10,7 +10,7 @@ function Card({title, description, imgUrl, author, upvotes}) {
         <img src={imgUrl} alt="Card" />
         <p>{author}</p>
         <button>Upvote: {upvotes}</button>
-        <button>Delete</button>
+        <button onClick={()=> handleDelete(key)}>Delete</button>
     </div>
   );}
 

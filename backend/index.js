@@ -23,7 +23,6 @@ app.get('/boards/:id', async (req, res) => {
         // include cards associated with board in the query result
         include: {card: true} 
     });
-    console.log(board)
     res.status(200).json(board)
 });
 
@@ -50,10 +49,12 @@ app.delete('/boards/:id', async (req, res) => {
     res.status(200).json(deletedBoard);
 });
 
+
+
+//cards stuff
 app.post('/boards/:id/cards', async (req, res) => {
     const {id} = req.params;
     const {title, description, author, imgUrl} = req.body;
-    console.log(req.body)
     const newCard = await prisma.card.create({
         data: {
             title,
@@ -67,15 +68,15 @@ app.post('/boards/:id/cards', async (req, res) => {
     res.status(201).json(newCard);
 })
 
-app.delete('/cards/:cardId', async (req, res) => {
-    const { cardId } = req.params; // Get the card ID from the URL parameters
+app.delete('boards/:id/cards/:cardId', async (req, res) => {
+    const {id, cardId } = req.params; // Get the card ID from the URL parameters
     try {
-        const card = await prisma.card.delete({
+        const deletedCard = await prisma.card.delete({
             where: {
                 id: parseInt(cardId), // Ensure the ID is an integer
             }
         });
-        res.status(200).json({ message: 'Card deleted successfully', card });
+        res.status(200).json({ message: 'Card deleted successfully', deletedCard });
     } catch (error) {
         console.error(error);
         if (error.code === 'P2025') {

@@ -1,0 +1,7 @@
+.card-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: solid 2px rgb(197, 39, 197);
+
+}

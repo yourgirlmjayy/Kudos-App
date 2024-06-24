@@ -4,7 +4,7 @@ import appLogo from './Star-img.webp'
 function Header() {
     return (
         <div className='app-header'>
-                <h1 className='app-name'>🎆KUDOS BOARD🎆</h1>
+                <b><h1 className='app-name'>KUDOS BOARD 🎉</h1></b>
         </div>
     )
 }
