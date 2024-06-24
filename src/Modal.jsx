@@ -12,6 +12,8 @@ function Modal({closeModal, onModalDataChange, boardData, submitForm}) {
                 <h2>Create a New Board</h2>
                 <p>Title:</p>
                 <input name="title" type="text" value={boardData.title} onChange={handleInputChange} placeholder="Title..."/>
+                <p>imgUrl:</p>
+                <input name="imgUrl" value={boardData.imgUrl} onChange={handleInputChange}></input>
                 <p>Category:</p>
                 <select name='category' value={boardData.category} onChange={handleInputChange}>
                     <option></option>

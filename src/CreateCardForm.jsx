@@ -78,9 +78,9 @@ function CreateCardForm ({closeModal, boardId, submitForm}) {
                 <p>GIF Url:</p>
                 <input className='gifs-url' type="text" value={gifsURL} onChange={(event) => setGifsURL(event.target.value)}></input>
                 <p>Author:</p>
-                <input className='author' type="text" value={author} onChange={(event) => setAuthor(event.target.value)} placeholder="Optional"/>
+                <input className='author' type="text" value={author} onChange={(event) => setAuthor(event.target.value)} placeholder="Optional..."/>
                 <p></p>
-                <button onClick={submitForm}>Create Card</button> 
+                <button onClick={handleSubmit}>Create Card</button> 
                 {/* //create submit form function */}
             </div>
         </div>

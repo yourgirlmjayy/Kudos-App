@@ -10,7 +10,7 @@ import BoardPage from './BoardPage.jsx';
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [boardData, setBoardData] = useState({ title: '', category: '', author: null}) //set author to null because it is not a required field
+  const [boardData, setBoardData] = useState({ title: '', imgUrl: '', category: '', author: null}) //set author to null because it is not a required field
   const [boards, setBoards] = useState([]);
   const [filteredBoards, setFilteredBoards] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -44,6 +44,7 @@ function App() {
   };
 
   async function addBoard(boardData) {
+    console.log("imgurltest", boardData.imgUrl)
     try{
       const backendUrlAccess = import.meta.env.VITE_BACKEND_ADDRESS;
       const options = {
@@ -53,6 +54,7 @@ function App() {
           'Content-Type': 'application/json'},
         body: JSON.stringify({
           title: boardData.title,
+          imgUrl: boardData.imgUrl,
           category: boardData.category,
           author: boardData.author
           })
@@ -62,6 +64,7 @@ function App() {
         throw new Error('Something went wrong!');
       }
       const data = await response.json();
+      console.log(data);
       getBoards();
     }
     catch(error) {
@@ -110,6 +113,7 @@ function App() {
   const handleBoardDataChange = (data) => {
     setBoardData(prev => ({ ...prev, ...data }));
   };
+  
   const handleDeleteBoard = (boardId) => {
     deleteBoard(boardId);
   }
@@ -155,6 +159,7 @@ function App() {
         id={board.id}
         title={board.title}
         category={board.category}
+        imgUrl={board.imgUrl}
         onBoardDelete={() => handleDeleteBoard(board.id)}
       />
     )

@@ -1,0 +1,13 @@
+.button-container{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.centre-button{
+    text-align: center;
+    margin: 10px;
+    padding: 5px;
+
+}
