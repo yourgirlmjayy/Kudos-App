@@ -1,13 +1,102 @@
 import CreateCardForm from "./CreateCardForm";
+import { useParams } from 'react-router-dom';
 import Header from "./Header"
-import { useState } from "react";
+import CardList from "./CardList";
+import { useState, useEffect } from "react";
 
 function BoardPage() {
-    const [isModalVisible, setIsModalVisible] = useState(true);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [selectedBoard,setSelectedBoard] = useState({});
+    const [cardData,setCardData] = useState({
+        title: '',
+        description: '',
+        imgUrl: '',
+        author: null,
+        upvotes: 0,
+        boardId: '',
+    });
 
-    // set function to handle when modal is opened
+    const { boardId } = useParams();
+
+    async function getSpecificBoard(boardId) {
+        try{
+            const backendUrlAccess = import.meta.env.VITE_BACKEND_ADDRESS;
+            const response = await fetch(`${backendUrlAccess}/boards/${boardId}`);
+            if (!response.ok) {
+                throw new Error('Something went wrong!');
+            }
+            const data = await response.json();
+            setSelectedBoard(data);
+        }
+        catch(error) {
+            console.error(error);
+        }
+    };
+
+    async function addCard(cardData) {
+        try{
+          const backendUrlAccess = import.meta.env.VITE_BACKEND_ADDRESS;
+          const options = {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              title: cardData.title,
+              description: cardData.description,
+              imgUrl: cardData.imgUrl,
+              author: cardData.author,
+              boardId: cardData.boardId
+              })
+            };
+          const response = await fetch(`${backendUrlAccess}/boards/${cardData.boardId}/cards`,options);
+          if (!response.ok) {
+            throw new Error('Something went wrong!');
+          }
+          const data = await response.json();
+          setCardData(data);
+          getSpecificBoard(cardData.boardId);
+        }
+        catch(error) {
+          console.error(error);
+        }
+      };
+
+      async function deleteCard(boardId) {
+        try{
+          const backendUrlAccess = import.meta.env.VITE_BACKEND_ADDRESS;
+          const options = {
+            method: 'DELETE',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'},
+            };
+          const response = await fetch(`${backendUrlAccess}/boards/${boardId}/cards/`,options);
+          if (!response.ok) {
+            throw new Error('Something went wrong!');
+          }
+          const data = await response.json();
+          setCardData(data);
+          getSpecificBoard(cardData.boardId);
+
+        }
+        catch(error) {
+          console.error(error);
+        }
+      }
+      const handleCreateCard = (newCardData) => {
+        console.log(newCardData);
+        addCard(newCardData);
+        handleCloseModal();
+      }
+
+    useEffect(() => {
+      getSpecificBoard(boardId);
+    }, []);
+
+// set function to handle when modal is opened
   function handleOpenModal (){
-    //set modal visibility to true to handle when modal is open
+     //set modal visibility to true to handle when modal is open
     setIsModalVisible(true);
   }
 
@@ -19,15 +108,12 @@ function BoardPage() {
     return (
         <>
             <Header />
-            <h1>Board Title</h1>
+            <h1>{selectedBoard.title}</h1>
             <button onClick={handleOpenModal}>Create a New Card</button>
             {isModalVisible && (
             <CreateCardForm
               isOpen={isModalVisible}
               closeModal={handleCloseModal}
-            //   onModalDataChange={handleBoardDataChange}
-            //   boardData={boardData}
-            //   submitForm={handleCreateBoard}
             />
           )}
         </>

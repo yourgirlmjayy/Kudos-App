@@ -1,13 +1,10 @@
-.header-container{
-    background-color: pink;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+.app-header {
+    background-color: rgb(145, 188, 158);
     align-items: center;
-    justify-content: space-evenly;
-    color: rgb(255, 255, 255);
+    color: white;
     padding: 10px;
-}
+    margin: 0;
+  }
 
 .app-logo{
     height: 50px;
@@ -15,6 +12,6 @@
 }
 
 .app-name{
-    font-size: 24px;
-    color: rgb(115, 115, 201);
+    font-size: 30px;
+    color: white;
 }

@@ -8,7 +8,7 @@ function Modal({closeModal, onModalDataChange, boardData, submitForm}) {
     return (
         <div className="modal-overlay">
             <div className="modal-content">
-                <button className="close-button" onClick={closeModal}>Ⅹ</button>
+                <button className="close-button" onClick={closeModal}><b>X</b></button>
                 <h2>Create a New Board</h2>
                 <p>Title:</p>
                 <input name="title" type="text" value={boardData.title} onChange={handleInputChange} placeholder="Title..."/>
