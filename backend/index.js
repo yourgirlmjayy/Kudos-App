@@ -21,8 +21,9 @@ app.get('/boards/:id', async (req, res) => {
         //specify that id is a number
         where: { id: parseInt(id) }, 
         // include cards associated with board in the query result
-        include: {card: true,} 
+        include: {card: true} 
     });
+    console.log(board)
     res.status(200).json(board)
 });
 
@@ -52,6 +53,7 @@ app.delete('/boards/:id', async (req, res) => {
 app.post('/boards/:id/cards', async (req, res) => {
     const {id} = req.params;
     const {title, description, author, imgUrl} = req.body;
+    console.log(req.body)
     const newCard = await prisma.card.create({
         data: {
             title,
@@ -84,32 +86,29 @@ app.delete('/cards/:cardId', async (req, res) => {
     }
 });
 
-// app.patch('/cards/:cardId/upvote', async (req, res) => {
-//     const { cardId } = req.params; // Get the card ID from the URL parameters
-//     try {
-//         const updatedCard = await prisma.card.update({
-//             where: {
-//                 id: parseInt(cardId), // Ensure the ID is an integer
-//             },
-//             data: {
-//                 upvotes: {
-//                     increment: 1 // Increment the upvote count by 1
-//                 }
-//             }
-//         });
-//         res.status(200).json(updatedCard);
-//     } catch (error) {
-//         console.error(error);
-//         if (error.code === 'P2025') {
-//             res.status(404).json({ message: 'Card not found' });
-//         } else {
-//             res.status(500).json({ message: 'Internal server error' });
-//         }
-//     }
-// });
-
-
-
+app.patch('/cards/:cardId/upvote', async (req, res) => {
+    const { cardId } = req.params; // Get the card ID from the URL parameters
+    try {
+        const updatedCard = await prisma.card.update({
+            where: {
+                id: parseInt(cardId), // Ensure the ID is an integer
+            },
+            data: {
+                upvotes: {
+                    increment: 1 // Increment the upvote count by 1
+                }
+            }
+        });
+        res.status(200).json(updatedCard);
+    } catch (error) {
+        console.error(error);
+        if (error.code === 'P2025') {
+            res.status(404).json({ message: 'Card not found' });
+        } else {
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+});
 
 
 const PORT = 3000
