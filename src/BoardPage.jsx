@@ -19,6 +19,7 @@ function BoardPage() {
     const { boardId } = useParams();
 
     async function getSpecificBoard(boardId) {
+        // function to get a specfic board from all boards
         try{
             const backendUrlAccess = import.meta.env.VITE_BACKEND_ADDRESS;
             const response = await fetch(`${backendUrlAccess}/boards/${boardId}`);
@@ -60,36 +61,38 @@ function BoardPage() {
         catch(error) {
           console.error(error);
         }
-      };
+    };
 
-      async function deleteCard(boardId) {
+    async function deleteCard(boardId) {
         try{
-          const backendUrlAccess = import.meta.env.VITE_BACKEND_ADDRESS;
-          const options = {
+            const backendUrlAccess = import.meta.env.VITE_BACKEND_ADDRESS;
+            const options = {
             method: 'DELETE',
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'},
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'},
             };
-          const response = await fetch(`${backendUrlAccess}/boards/${boardId}/cards/`,options);
-          if (!response.ok) {
+            const response = await fetch(`${backendUrlAccess}/boards/${boardId}/cards/`,options);
+            if (!response.ok) {
             throw new Error('Something went wrong!');
-          }
-          const data = await response.json();
-          setCardData(data);
-          getSpecificBoard(cardData.boardId);
+            }
+            const data = await response.json();
+            setCardData(data);
+            getSpecificBoard(cardData.boardId);
 
         }
         catch(error) {
-          console.error(error);
+            console.error(error);
         }
-      }
-      const handleCreateCard = (newCardData) => {
-        console.log(newCardData);
-        addCard(newCardData);
-        handleCloseModal();
-      }
+        }
 
+
+    const handleCreateCard = (newCardData) => {
+        addCard(newCardData);
+        setIsModalVisible(false)
+        };
+
+    // render specific board page when view board is clicked
     useEffect(() => {
       getSpecificBoard(boardId);
     }, []);
@@ -105,19 +108,20 @@ function BoardPage() {
     setIsModalVisible(false);
   }
 
-    return (
-        <>
-            <Header />
-            <h1>{selectedBoard.title}</h1>
-            <button onClick={handleOpenModal}>Create a New Card</button>
-            {isModalVisible && (
-            <CreateCardForm
-              isOpen={isModalVisible}
-              closeModal={handleCloseModal}
-            />
-          )}
-        </>
+  return (
+    <>
+        <Header />
+        <h1>{selectedBoard.title}</h1>
+        <button onClick={handleOpenModal}>Create a New Card</button>
+        {/* <CardList cards={selectedBoard.cards} handleDelete={deleteCard} handleIncrementUpvote={incrementUpvote}/> */}
+        {isModalVisible && <CreateCardForm
+            closeModal={handleCloseModal}
+            submitForm={handleCreateCard}
+            boardId={boardId} />
+        }
+    </> 
     )
-}
+} 
+    
 
 export default BoardPage;

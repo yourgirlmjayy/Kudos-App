@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router';
 
 function Board(props){
     const navigate = useNavigate();
+    console.log(props.imgUrl);
     return(
         <div className='board-card'>
-            <img src="https://picsum.photos/200/300?random=124" className='propsImage' alt='Board Image'></img>
+            <img src={props.imgUrl} className='propsImage' alt='Board Image'></img>
             <div className='board-details'>
                 <h5 className='board-title'>{props.title}</h5>
                 <span className='board-category'>{props.category}</span>

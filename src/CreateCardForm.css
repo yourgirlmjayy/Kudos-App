@@ -29,10 +29,17 @@
 }
 
 .gifs{
-    width: calc(25% - 10px);
+    width: calc(20% - 10px);
     margin-bottom: 10px;
     box-sizing: border-box;
 }
+
+.gifs:hover {
+    border: 5px solid #5800d3;
+    box-shadow: 0px 0px 10px rgba(145, 0, 109, 0.5);
+    border-radius: 10px;
+    background-color: rgba(245, 230, 255, 0.5);
+  }
 
 .close-button {
     background: none;

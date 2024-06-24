@@ -1,15 +1,21 @@
+@font-face {
+    font-family: kudos-font;
+    src: url('./Playball.ttf');
+  }
+
 .propsImage{
-    width: 195px;
-    height: 190px;;
+    width: 205px;
+    height: 195px;;
 }
 
 .board-card{
     background-color: #fff;
-    border: 2px solid rgb(107, 189, 166);
+    border: 2px solid rgb(134, 107, 189);
     border-right: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    width: 200px;
+    width: 205px;
     text-align: center;
+    font-family: kudos-font;
     margin: 7px;
 
 }
@@ -17,7 +23,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
     cursor: pointer;
-    background-color: rgb(124, 189, 170);
+    background-color: rgb(168, 124, 189);
     color: black;
   }
   .board-card::before,
@@ -58,19 +64,25 @@
 
 .board-title{
     font-size: 18px;
+    font-family: kudos-font;
 }
 .card-button{
     display: flex;
     flex-direction: row;
+
 }
 .view-board{
-    background-color: rgb(102, 126, 199);
+    background-color: rgb(102, 152, 199);
     color: black;
     display: flex;
+    font-size: medium;
+    font-family: kudos-font;
 }
 
 .delete-board{
-    background-color: rgb(138, 7, 7);
+    background-color: rgb(202, 35, 35);
     display: flex;
     color: black;
+    font-size: medium;
+    font-family: kudos-font;
 }

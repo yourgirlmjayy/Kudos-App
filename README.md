@@ -36,7 +36,7 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `https://www.loom.com/share/d0a6941cc058466ca61354756b19cbd4?sid=97231d4a-bc8a-46d0-a8ed-29a855347535`.
+`TODO://` Add the embedded URL code to your animated app walkthrough below, `https://www.loom.com/share/904a31ff595f43f59735ff40016de3a5?sid=488e4b27-4e16-44c6-a2c1-56e922f1926e`
 
 `ADD_EMBEDDED_CODE_HERE`
 
