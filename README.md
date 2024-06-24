@@ -26,8 +26,8 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
     -  [x] Each card features a text message.
     -  [x ] Each card features a gif found using the [GIPHY API](https://developers.giphy.com/docs/api/).
     -  [ x] Users can optionally sign the card as the author.
--   [ ] Cards can be upvoted.
--   [ ] Cards can be deleted.
+-   [ x] Cards can be upvoted.
+-   [ x] Cards can be deleted.
 
 
 #### STRETCH FEATURES
@@ -35,10 +35,8 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 
 ### Walkthrough Video
+ `https://www.loom.com/share/904a31ff595f43f59735ff40016de3a5?sid=488e4b27-4e16-44c6-a2c1-56e922f1926e`
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `https://www.loom.com/share/904a31ff595f43f59735ff40016de3a5?sid=488e4b27-4e16-44c6-a2c1-56e922f1926e`
-
-`ADD_EMBEDDED_CODE_HERE`
 
 ### Reflection
 
