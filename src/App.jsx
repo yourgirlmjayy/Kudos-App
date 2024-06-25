@@ -25,7 +25,6 @@ function App() {
     // fetch list of boards from backend server
     try{
       const backendUrlAccess = import.meta.env.VITE_BACKEND_ADDRESS;
-      console.log(backendUrlAccess);
       const response = await fetch(`${backendUrlAccess}/boards`);
       // handle errors
       if (!response.ok) {
@@ -44,7 +43,6 @@ function App() {
   };
 
   async function addBoard(boardData) {
-    console.log("imgurltest", boardData.imgUrl)
     try{
       const backendUrlAccess = import.meta.env.VITE_BACKEND_ADDRESS;
       const options = {
@@ -64,7 +62,6 @@ function App() {
         throw new Error('Something went wrong!');
       }
       const data = await response.json();
-      console.log(data);
       getBoards();
     }
     catch(error) {

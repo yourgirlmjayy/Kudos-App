@@ -1,5 +1,4 @@
 import './Header.css'
-import appLogo from './Star-img.webp'
 
 function Header() {
     return (

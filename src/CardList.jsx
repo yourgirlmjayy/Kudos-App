@@ -1,4 +1,4 @@
-/// import "./CardList.css"
+
 import Card from "./Card"
 
 function CardList ({cards, handleDelete, handleIncrementUpvote}) {

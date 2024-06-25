@@ -1,6 +1,21 @@
-.card{
-    margin: 7px;
-    gap: 7px;
+.card-details{
+    margin: 0;
+    gap: 0;
     box-sizing: border-box;
     color: black;
+}
+.img{
+    width: calc(15% - 10px);
+    padding: 15px;
+}
+
+.card-container{
+    background-color: #93679d;
+    border-right: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px;
+    
 }
