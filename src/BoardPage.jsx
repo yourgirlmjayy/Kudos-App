@@ -72,7 +72,7 @@ function BoardPage() {
             'Accept': 'application/json',
             'Content-Type': 'application/json'},
           };
-        const response = await fetch(`${backendUrlAccess}/boards/${boardId}/cards/${cardId}`,options);
+        const response = await fetch(`${backendUrlAccess}/cards/${cardId}`,options);
         if (!response.ok) {
           throw new Error('Something went wrong!');
         }

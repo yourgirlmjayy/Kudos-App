@@ -68,15 +68,15 @@ app.post('/boards/:id/cards', async (req, res) => {
     res.status(201).json(newCard);
 })
 
-app.delete('boards/:id/cards/:cardId', async (req, res) => {
-    const {id, cardId } = req.params; // Get the card ID from the URL parameters
+app.delete('/cards/:cardId', async (req, res) => {
+    const { cardId } = req.params; // Get the card ID from the URL parameters
     try {
-        const deletedCard = await prisma.card.delete({
+        const card = await prisma.card.delete({
             where: {
                 id: parseInt(cardId), // Ensure the ID is an integer
             }
         });
-        res.status(200).json({ message: 'Card deleted successfully', deletedCard });
+        res.status(200).json({ message: 'Card deleted successfully', card });
     } catch (error) {
         console.error(error);
         if (error.code === 'P2025') {

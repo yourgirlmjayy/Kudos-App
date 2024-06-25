@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router';
 
 function Board(props){
     const navigate = useNavigate();
-    console.log(props.imgUrl);
     return(
         <div className='board-card'>
             <img src={props.imgUrl} className='propsImage' alt='Board Image'></img>

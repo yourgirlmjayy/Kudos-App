@@ -81,7 +81,6 @@ function CreateCardForm ({closeModal, boardId, submitForm}) {
                 <input className='author' type="text" value={author} onChange={(event) => setAuthor(event.target.value)} placeholder="Optional..."/>
                 <p></p>
                 <button onClick={handleSubmit}>Create Card</button> 
-                {/* //create submit form function */}
             </div>
         </div>
     );
