@@ -9,11 +9,11 @@
 }
 
 .board-card{
-    background-color: #fff;
-    border: 2px solid rgb(134, 107, 189);
+    background-color: #93679d;
     border-right: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     width: 205px;
+    color: black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     margin: 7px;
@@ -68,7 +68,7 @@
 }
 .card-button{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
 }
 .view-board{
@@ -77,6 +77,9 @@
     display: flex;
     font-size: medium;
     font-family: kudos-font;
+    text-align: center;
+    margin: 4px;
+    size: 15px;
 }
 
 .delete-board{
@@ -85,4 +88,5 @@
     color: black;
     font-size: medium;
     font-family: kudos-font;
+    text-align: center;
 }

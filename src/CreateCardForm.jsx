@@ -20,7 +20,6 @@ function CreateCardForm ({closeModal, boardId, submitForm}) {
             author,
             boardId
         };
-        console.log(cardData)
         submitForm(cardData);
     };
 
