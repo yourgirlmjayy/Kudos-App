@@ -66,7 +66,7 @@ function CreateCardForm ({closeModal, boardId, submitForm}) {
                 <p>Search GIFs:</p>
                 <input className="searchGIFs" type="text" value={searchInput} onChange={handleInputChange} placeholder="Search..."/>
                 <button onClick={handleSearchSubmit}>Search</button>
-                <div className='giffy-images'>  
+                <div className='giffy-images'>
                     {gifs.map((gif) => (
                         <img className='gifs'
                             src={gif.images.downsized.url}
