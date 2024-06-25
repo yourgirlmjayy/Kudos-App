@@ -3,5 +3,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    width: calc(10% - 10px);
 
 }

@@ -25,6 +25,7 @@
 .giffy-images{
     display: flex;
     flex-wrap: wrap;
+    width: calc(5% - 10px);
     justify-content: space-between;
 }
 

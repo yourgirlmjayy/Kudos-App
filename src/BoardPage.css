@@ -1,0 +1,12 @@
+footer {
+    background-color: rgb(177, 120, 223);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    align-items: center;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+    bottom: 0;
+    font-family: header-font;
+    font-size: 30px;
+  }

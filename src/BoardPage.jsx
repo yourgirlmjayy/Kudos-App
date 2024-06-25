@@ -1,4 +1,5 @@
 import CreateCardForm from "./CreateCardForm";
+import './BoardPage.css';
 import { useParams } from 'react-router-dom';
 import Header from "./Header"
 import CardList from "./CardList";
@@ -105,7 +106,6 @@ function BoardPage() {
 
           const updatedCard = await response.json();
           setCardData(updatedCard);
-          getSpecificBoard(cardData.boardId);
       } catch (error) {
           console.error('Error incrementing upvote:', error);
       }
@@ -146,6 +146,7 @@ function BoardPage() {
             submitForm={handleCreateCard}
             boardId={boardId} />
         }
+        <footer>Created by Mojolajesu Dada</footer>
     </> 
     )
 } 
