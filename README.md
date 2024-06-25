@@ -35,23 +35,20 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 
 ### Walkthrough Video
- `https://www.loom.com/share/904a31ff595f43f59735ff40016de3a5?sid=488e4b27-4e16-44c6-a2c1-56e922f1926e`
+ `https://www.loom.com/share/d7fd5b0777614c75a7e27b74efa73b14?sid=f3f11a80-693f-4483-ab62-a957e1762f9f`
 
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
 **Not really but kind of**
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-Add your response here
 **I would have added comments**
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
 
 ### Open-source libraries used
 

@@ -13,6 +13,7 @@ function CardList ({cards, handleDelete, handleIncrementUpvote}) {
                     author={card.author}
                     imgUrl={card.imgUrl}
                     upvotes={card.upvotes}
+                    id={card.id}
                     handleDelete={handleDelete}
                     handleIncrementUpvote={handleIncrementUpvote}
                 />
